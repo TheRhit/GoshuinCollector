@@ -10,14 +10,14 @@ interface TempleProgressCounterProps {
   totalCount: number
 }
 
+const MOTIVATIONAL_PHRASES_KEYS = Array.from({ length: 10 }, (_, i) => `progress_motivational_phrase_${i + 1}`)
+
 export function TempleProgressCounter({ visitedCount, totalCount }: TempleProgressCounterProps) {
   const { t } = useTranslation()
   const [currentPhrase, setCurrentPhrase] = useState("")
   const [showMotivation, setShowMotivation] = useState(false)
   const [isMinimized, setIsMinimized] = useState(true)
   const prevVisitedCount = useRef(visitedCount)
-
-  const MOTIVATIONAL_PHRASES_KEYS = Array.from({ length: 10 }, (_, i) => `progress_motivational_phrase_${i + 1}`)
 
   const percentage = totalCount > 0 ? Math.round((visitedCount / totalCount) * 100) : 0
   const isNearCompletion = percentage >= 70
@@ -27,8 +27,15 @@ export function TempleProgressCounter({ visitedCount, totalCount }: TempleProgre
     if (visitedCount > 0 && visitedCount > prevVisitedCount.current) {
       const randomKey = MOTIVATIONAL_PHRASES_KEYS[Math.floor(Math.random() * MOTIVATIONAL_PHRASES_KEYS.length)]
       setCurrentPhrase(t(randomKey))
+
+      setIsMinimized(false)
       setShowMotivation(true)
-      const timer = setTimeout(() => setShowMotivation(false), 3000)
+
+      const timer = setTimeout(() => {
+        setIsMinimized(true)
+        setShowMotivation(false)
+      }, 2000)
+
       prevVisitedCount.current = visitedCount
       return () => clearTimeout(timer)
     } else {
@@ -38,6 +45,7 @@ export function TempleProgressCounter({ visitedCount, totalCount }: TempleProgre
 
   return (
     <motion.div
+      layout
       onTap={() => setIsMinimized(!isMinimized)}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
