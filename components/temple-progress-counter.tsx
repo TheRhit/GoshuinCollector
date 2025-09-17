@@ -27,14 +27,21 @@ export function TempleProgressCounter({ visitedCount, totalCount }: TempleProgre
     if (visitedCount > 0 && visitedCount > prevVisitedCount.current) {
       const randomKey = MOTIVATIONAL_PHRASES_KEYS[Math.floor(Math.random() * MOTIVATIONAL_PHRASES_KEYS.length)]
       setCurrentPhrase(t(randomKey))
+
+      setIsMinimized(false)
       setShowMotivation(true)
-      const timer = setTimeout(() => setShowMotivation(false), 3000)
+
+      const timer = setTimeout(() => {
+        setIsMinimized(true)
+        setShowMotivation(false)
+      }, 2000)
+
       prevVisitedCount.current = visitedCount
       return () => clearTimeout(timer)
     } else {
       prevVisitedCount.current = visitedCount
     }
-  }, [visitedCount, t])
+  }, [visitedCount, t, MOTIVATIONAL_PHRASES_KEYS])
 
   return (
     <motion.div
