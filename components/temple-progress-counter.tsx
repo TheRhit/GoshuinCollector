@@ -10,14 +10,14 @@ interface TempleProgressCounterProps {
   totalCount: number
 }
 
+const MOTIVATIONAL_PHRASES_KEYS = Array.from({ length: 10 }, (_, i) => `progress_motivational_phrase_${i + 1}`)
+
 export function TempleProgressCounter({ visitedCount, totalCount }: TempleProgressCounterProps) {
   const { t } = useTranslation()
   const [currentPhrase, setCurrentPhrase] = useState("")
   const [showMotivation, setShowMotivation] = useState(false)
   const [isMinimized, setIsMinimized] = useState(true)
   const prevVisitedCount = useRef(visitedCount)
-
-  const MOTIVATIONAL_PHRASES_KEYS = Array.from({ length: 10 }, (_, i) => `progress_motivational_phrase_${i + 1}`)
 
   const percentage = totalCount > 0 ? Math.round((visitedCount / totalCount) * 100) : 0
   const isNearCompletion = percentage >= 70
@@ -41,7 +41,7 @@ export function TempleProgressCounter({ visitedCount, totalCount }: TempleProgre
     } else {
       prevVisitedCount.current = visitedCount
     }
-  }, [visitedCount, t, MOTIVATIONAL_PHRASES_KEYS])
+  }, [visitedCount, t])
 
   return (
     <motion.div
