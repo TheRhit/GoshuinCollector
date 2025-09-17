@@ -2,7 +2,7 @@
 
 ### Itinerario de Templos: Japón & Corea del Sur
 
-Una aplicación web futurista para explorar templos y palacios sagrados de Japón y Corea del Sur, diseñada para coleccionistas de Goshuin y entusiastas de la cultura asiática.
+Una aplicación web para explorar templos y palacios sagrados de Japón y Corea del Sur, diseñada para coleccionistas de Goshuin y entusiastas de la cultura asiática.
 
 ## ✨ Características Principales
 
