@@ -45,6 +45,7 @@ export function TempleProgressCounter({ visitedCount, totalCount }: TempleProgre
 
   return (
     <motion.div
+      layout
       onTap={() => setIsMinimized(!isMinimized)}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
