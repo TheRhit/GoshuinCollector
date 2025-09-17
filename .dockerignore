@@ -1,0 +1,20 @@
+# Dependencias
+node_modules
+
+# Directorio de build de Next.js
+.next
+
+# Archivos de desarrollo local
+.env.local
+*.log
+
+# Cache de pnpm
+.pnpm-store
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de Git
+.git
+.gitignore

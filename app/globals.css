@@ -1,0 +1,166 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens for authentic Japanese aesthetic - sakura, temples, yokais */
+  --background: oklch(0.98 0.01 30); /* Soft cream background like washi paper */
+  --foreground: oklch(0.25 0.02 20); /* Deep charcoal for text */
+  --card: oklch(0.99 0.005 30 / 0.95); /* Pure white cards with subtle warmth */
+  --card-foreground: oklch(0.25 0.02 20);
+  --popover: oklch(0.99 0.005 30 / 0.98);
+  --popover-foreground: oklch(0.25 0.02 20);
+  --primary: oklch(0.75 0.12 15); /* Sakura pink - soft and elegant */
+  --primary-foreground: oklch(0.98 0.005 30);
+  --secondary: oklch(0.45 0.08 25); /* Vermillion red like torii gates */
+  --secondary-foreground: oklch(0.98 0.005 30);
+  --muted: oklch(0.95 0.01 30); /* Very light cream for muted elements */
+  --muted-foreground: oklch(0.55 0.02 20);
+  /* Changed accent from forest green to dark rose for better harmony */
+  --accent: oklch(0.45 0.15 340); /* Dark rose for better harmony */
+  --accent-foreground: oklch(0.98 0.005 30);
+  --destructive: oklch(0.55 0.25 25);
+  --destructive-foreground: oklch(0.98 0.005 30);
+  --border: oklch(0.88 0.02 30); /* Soft borders with warmth */
+  --input: oklch(0.99 0.005 30);
+  --ring: oklch(0.75 0.12 15 / 0.3); /* Sakura pink focus rings */
+  --chart-1: oklch(0.75 0.12 15); /* Sakura pink */
+  --chart-2: oklch(0.45 0.08 25); /* Vermillion */
+  /* Updated chart colors to use dark rose instead of green */
+  --chart-3: oklch(0.45 0.15 340); /* Dark rose */
+  --chart-4: oklch(0.4 0.12 340); /* Darker version of dark rose */
+  --chart-5: oklch(0.8 0.08 60); /* Golden yellow like temple ornaments */
+  --radius: 0.75rem;
+  --sidebar: oklch(0.98 0.01 30 / 0.95);
+  --sidebar-foreground: oklch(0.25 0.02 20);
+  --sidebar-primary: oklch(0.75 0.12 15);
+  --sidebar-primary-foreground: oklch(0.98 0.005 30);
+  /* Updated sidebar accent to user's color */
+  --sidebar-accent: oklch(0.45 0.15 340);
+  --sidebar-accent-foreground: oklch(0.98 0.005 30);
+  --sidebar-border: oklch(0.88 0.02 30);
+  --sidebar-ring: oklch(0.75 0.12 15 / 0.3);
+}
+
+.dark {
+  /* Updated dark mode tokens for Japanese night aesthetic */
+  --background: oklch(0.08 0.02 20); /* Deep charcoal like sumi ink */
+  --foreground: oklch(0.95 0.01 30); /* Soft white like moonlight */
+  --card: oklch(0.12 0.02 20 / 0.9);
+  --card-foreground: oklch(0.95 0.01 30);
+  --popover: oklch(0.12 0.02 20 / 0.95);
+  --popover-foreground: oklch(0.95 0.01 30);
+  --primary: oklch(0.8 0.15 15); /* Brighter sakura for dark mode */
+  --primary-foreground: oklch(0.08 0.02 20);
+  --secondary: oklch(0.6 0.12 25); /* Muted vermillion */
+  --secondary-foreground: oklch(0.95 0.01 30);
+  --muted: oklch(0.15 0.02 20);
+  --muted-foreground: oklch(0.65 0.01 30);
+  /* Updated accent to dark rose in dark mode too */
+  --accent: oklch(0.55 0.18 340); /* Lighter version of user's color for dark mode */
+  --accent-foreground: oklch(0.08 0.02 20);
+  --destructive: oklch(0.6 0.28 25);
+  --destructive-foreground: oklch(0.95 0.01 30);
+  --border: oklch(0.2 0.02 20);
+  --input: oklch(0.15 0.02 20);
+  --ring: oklch(0.8 0.15 15 / 0.4);
+  --chart-1: oklch(0.8 0.15 15);
+  --chart-2: oklch(0.6 0.12 25);
+  /* Updated chart colors for dark mode to use dark rose */
+  --chart-3: oklch(0.45 0.15 340);
+  --chart-4: oklch(0.4 0.12 340);
+  --chart-5: oklch(0.85 0.12 60);
+  --sidebar: oklch(0.1 0.02 20);
+  --sidebar-foreground: oklch(0.95 0.01 30);
+  --sidebar-primary: oklch(0.8 0.15 15);
+  --sidebar-primary-foreground: oklch(0.08 0.02 20);
+  --sidebar-accent: oklch(0.55 0.18 340);
+  --sidebar-accent-foreground: oklch(0.08 0.02 20);
+  --sidebar-border: oklch(0.2 0.02 20);
+  --sidebar-ring: oklch(0.8 0.15 15 / 0.4);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Removed horrible gradient background, now clean solid background */
+  }
+
+  /* Added glassmorphism utility classes */
+  .glass {
+    @apply backdrop-blur-md bg-card/80 border border-border/50;
+  }
+
+  .glass-strong {
+    @apply backdrop-blur-lg bg-card/90 border border-border/60;
+  }
+
+  /* Updated utility classes to use user's specific color instead of forest green */
+  .sakura-gradient {
+    background: linear-gradient(135deg, oklch(0.75 0.12 15) 0%, oklch(0.8 0.08 60) 100%);
+  }
+
+  .torii-shadow {
+    box-shadow: 0 4px 20px oklch(0.45 0.08 25 / 0.15);
+  }
+
+  /* Added high contrast overlay class to fix accessibility issues */
+  .temple-card-overlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75)) !important;
+  }
+
+  .temple-card-text {
+    color: rgb(255, 255, 255) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 1), 0 2px 6px rgba(0, 0, 0, 0.8), 0 3px 9px rgba(0, 0, 0, 0.6), 0 4px 12px
+      rgba(0, 0, 0, 0.4) !important;
+  }
+}
+
+html[lang="ja"] body {
+  font-family: var(--font-noto-sans-jp), var(--font-geist-sans), sans-serif;
+}
